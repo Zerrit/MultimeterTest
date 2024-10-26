@@ -569,6 +569,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -594,7 +595,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
+  m_BackGroundColor: {r: 0.03773582, g: 0.03773582, b: 0.03773582, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -650,6 +651,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49b4cc203aa6414fae5c798d1d0e7d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_MaxRayIntersections: 0
 --- !u!1 &1067720882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1570,7 +1587,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: df1732298b9961045af1b04491c33bf2, type: 2}
+  - {fileID: 2100000, guid: 54a0c206dc4c7de4b98fca2b858c0c4f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1773,6 +1790,8 @@ GameObject:
   - component: {fileID: 5080435201556589889}
   - component: {fileID: 7851787177520073713}
   - component: {fileID: 645151200316313832}
+  - component: {fileID: 7851787177520073715}
+  - component: {fileID: 7851787177520073714}
   m_Layer: 0
   m_Name: Selector
   m_TagString: Untagged
@@ -1847,7 +1866,7 @@ Transform:
   m_GameObject: {fileID: 4468882930120400420}
   serializedVersion: 2
   m_LocalRotation: {x: -0.4992315, y: -0.50076735, z: 0.50076735, w: 0.4992315}
-  m_LocalPosition: {x: -1.156, y: 3.695, z: 1.202}
+  m_LocalPosition: {x: -0.984, y: 3.696, z: 1.202}
   m_LocalScale: {x: 1.1264408, y: 1.1264408, z: 1.1264408}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1940,8 +1959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _multimeterDisplayText: {fileID: 1619291072}
-  _selector: {fileID: 5080435201556589889}
-  _rotationSpeed: 100
+  _selectorView: {fileID: 7851787177520073714}
 --- !u!23 &5961735424844648658
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2145,6 +2163,44 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4468882930120400420}
   m_Mesh: {fileID: -3322477392303664400, guid: a28a9ca3c2e860944837d83eae85e340, type: 3}
+--- !u!114 &7851787177520073714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4468882930120400420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fffbc3a9cfe45af86d05178dce28033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _meshRenderer: {fileID: 645151200316313832}
+  _transform: {fileID: 5080435201556589889}
+  _rotationSpeed: 100
+  _unselectColor: {r: 0.54901963, g: 0, b: 0, a: 1}
+  _selectColor: {r: 0.8584906, g: 0.020247417, b: 0.020247417, a: 1}
+--- !u!65 &7851787177520073715
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4468882930120400420}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.05, y: 1.05, z: 0.15}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8652140349452190675
 GameObject:
   m_ObjectHideFlags: 0

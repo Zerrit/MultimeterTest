@@ -33,8 +33,6 @@ namespace MultimeterTest.MVC.Model
 
         public void ChangeMode(MultimeterMode newMode)
         {
-            SelectedMode.Value = newMode;
-            
             switch (newMode)
             {
                 case MultimeterMode.Neutral:
@@ -67,6 +65,8 @@ namespace MultimeterTest.MVC.Model
                     break;
                 }
             }
+            
+            SelectedMode.Value = newMode;
         }
         
         private void Calculate()

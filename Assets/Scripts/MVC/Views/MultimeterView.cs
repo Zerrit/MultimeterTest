@@ -8,24 +8,15 @@ namespace MultimeterTest.MVC.Views
     public class MultimeterView : MonoBehaviour
     {
         [SerializeField] private TextMeshPro _multimeterDisplayText;
-        [SerializeField] private Transform _selector;
-        [SerializeField] private float _rotationSpeed;
+        [SerializeField] private SelectorView _selectorView;
 
         private IMultimeterModel _model;
 
         public void Initialize(IMultimeterModel model)
         {
             _model = model;
-            
             _model.SelectedModeValue.Subscribe(UpdateDisplayText);
-        }
-        
-        private void Update()
-        {
-            var scrollDelta = Input.GetAxis("Mouse ScrollWheel") * _rotationSpeed;
-            _selector.eulerAngles += new Vector3(0f, 0f, scrollDelta);
-            
-            DefineMode(_selector.eulerAngles.z);
+            _selectorView.OnAngleChanged += DefineMode;
         }
 
         private void UpdateDisplayText(float value)
@@ -55,6 +46,12 @@ namespace MultimeterTest.MVC.Views
             {
                 _model.ChangeMode(MultimeterMode.Resistance);
             }
+        }
+
+        private void OnDestroy()
+        {
+            _model.SelectedModeValue.Unsubscribe(UpdateDisplayText);
+            _selectorView.OnAngleChanged -= DefineMode;
         }
     }
 }

@@ -15,8 +15,9 @@ namespace MultimeterTest.MVC.Views
         
         public void Initialize(IMultimeterModel model)
         {
-            _model = model;
+            ClearValue();
             
+            _model = model;
             _model.SelectedMode.Subscribe(UpdateValuesText);
         }
         
@@ -58,6 +59,11 @@ namespace MultimeterTest.MVC.Views
             _amperageText.text = $"A 0";
             _dCVoltageText.text = $"V 0";
             _aCVoltageText.text = $"~ 0";
+        }
+
+        private void OnDestroy()
+        {
+            _model.SelectedMode.Unsubscribe(UpdateValuesText);
         }
     }
 }
