@@ -71,8 +71,8 @@ namespace MultimeterTest.MVC.Model
         
         private void Calculate()
         {
-            Amperage = (float)Math.Round(Mathf.Sqrt(Power / Resistance), 2);
-            DCVoltage = (float)Math.Round(Power / Amperage, 2);
+            Amperage = Mathf.Sqrt(Power / Resistance);
+            DCVoltage = Power / Amperage;
         }
     }
 }

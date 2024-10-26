@@ -29,25 +29,25 @@ namespace MultimeterTest.MVC.Views
             {
                 case MultimeterMode.DCVoltage:
                 {
-                    _dCVoltageText.text = $"V {_model.SelectedModeValue.Value}";
+                    _dCVoltageText.text = $"V {_model.SelectedModeValue.Value:F2}";
                     break;
                 }
                 
                 case MultimeterMode.ACVoltage:
                 {
-                    _aCVoltageText.text = $"~ {_model.SelectedModeValue.Value}";
+                    _aCVoltageText.text = $"~ {_model.SelectedModeValue.Value:F2}";
                     break;
                 }
                 
                 case MultimeterMode.Amperage:
                 {
-                    _amperageText.text = $"A {_model.SelectedModeValue.Value}";
+                    _amperageText.text = $"A {_model.SelectedModeValue.Value:F2}";
                     break;
                 }
                 
                 case MultimeterMode.Resistance:
                 {
-                    _resistanceText.text = $"Ω {_model.SelectedModeValue.Value}";
+                    _resistanceText.text = $"Ω {_model.SelectedModeValue.Value:F2}";
                     break;
                 }
             }
