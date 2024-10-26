@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MultimeterTest
+namespace MultimeterTest.Tools
 {
     public class ReactiveProperty<T>
     {

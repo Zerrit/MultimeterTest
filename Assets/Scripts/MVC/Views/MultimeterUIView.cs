@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MultimeterTest.MVC.Views
 {
-    public class MultimeterUIView : MonoBehaviour
+    public class MultimeterUIView : MonoBehaviour, IMultimeterUIView
     {
         [SerializeField] private TextMeshProUGUI _resistanceText;
         [SerializeField] private TextMeshProUGUI _amperageText;
@@ -12,15 +12,15 @@ namespace MultimeterTest.MVC.Views
         [SerializeField] private TextMeshProUGUI _aCVoltageText;
 
         private IMultimeterModel _model;
-        
+
         public void Initialize(IMultimeterModel model)
         {
             ClearValue();
-            
+
             _model = model;
             _model.SelectedMode.Subscribe(UpdateValuesText);
         }
-        
+
         private void UpdateValuesText(MultimeterMode mode)
         {
             ClearValue();
@@ -32,19 +32,19 @@ namespace MultimeterTest.MVC.Views
                     _dCVoltageText.text = $"V {_model.SelectedModeValue.Value:F2}";
                     break;
                 }
-                
+
                 case MultimeterMode.ACVoltage:
                 {
                     _aCVoltageText.text = $"~ {_model.SelectedModeValue.Value:F2}";
                     break;
                 }
-                
+
                 case MultimeterMode.Amperage:
                 {
                     _amperageText.text = $"A {_model.SelectedModeValue.Value:F2}";
                     break;
                 }
-                
+
                 case MultimeterMode.Resistance:
                 {
                     _resistanceText.text = $"Ω {_model.SelectedModeValue.Value:F2}";

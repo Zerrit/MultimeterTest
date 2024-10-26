@@ -7,11 +7,11 @@ namespace MultimeterTest.MVC.Views
     public class SelectorView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         public event Action<float> OnAngleChanged;  
-        
+
         [SerializeField] private MeshRenderer _meshRenderer;
         [SerializeField] private Transform _transform;
         [SerializeField] private float _rotationSpeed;
-        
+
         [SerializeField] private Color _unselectColor;
         [SerializeField] private Color _selectColor;
 
@@ -35,7 +35,7 @@ namespace MultimeterTest.MVC.Views
         {
             _isActive = false;
             _material.color = _unselectColor;
-            
+
             Debug.Log("Selector has been deactivated");
         }
 
@@ -55,7 +55,7 @@ namespace MultimeterTest.MVC.Views
 
             var rotationValue = scrollValue * _rotationSpeed;
             _transform.eulerAngles += new Vector3(0f, 0f, rotationValue);
-            
+
             OnAngleChanged?.Invoke(_transform.eulerAngles.z);
         }
     }

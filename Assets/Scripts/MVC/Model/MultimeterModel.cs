@@ -1,4 +1,4 @@
-using System;
+using MultimeterTest.Tools;
 using UnityEngine;
 
 namespace MultimeterTest.MVC.Model
@@ -7,25 +7,25 @@ namespace MultimeterTest.MVC.Model
     {
         public ReactiveProperty<MultimeterMode> SelectedMode { get; private set; }
         public ReactiveProperty<float> SelectedModeValue { get; private set; }
-        
-        public float Resistance { get; private set; } // Ом
-        public float Power { get; private set; } // Вт
-        public float Amperage { get; private set; } // A
-        public float DCVoltage { get; private set; } // В
-        public float ACVoltage { get; private set; } // В
+
+        public float Resistance { get; } // Ом
+        public float Power { get; }      // Вт
+        public float ACVoltage { get; }  // В
+        public float DCVoltage { get; private set; }  // В
+        public float Amperage { get; private set; }   // A
 
         public const float Neutral = 0;
-        
-        public MultimeterModel()
+
+        public MultimeterModel(float resistance, float power, float aCVoltage)
         {
-            Resistance = 1000;
-            Power = 400;
-            ACVoltage = 0.01f;
+            Resistance = resistance;
+            Power = power;
+            ACVoltage = aCVoltage;
         }
 
         public void Initialize()
         {
-            Calculate();
+            CalculateParameters();
 
             SelectedMode = new ReactiveProperty<MultimeterMode>();
             SelectedModeValue = new ReactiveProperty<float>();
@@ -68,8 +68,8 @@ namespace MultimeterTest.MVC.Model
             
             SelectedMode.Value = newMode;
         }
-        
-        private void Calculate()
+
+        private void CalculateParameters()
         {
             Amperage = Mathf.Sqrt(Power / Resistance);
             DCVoltage = Power / Amperage;
