@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace MultimeterTest.MVC.Views
 {
-    public class MultimeterView : MonoBehaviour
+    public class MultimeterView : MonoBehaviour, IMultimeterView
     {
         [SerializeField] private TextMeshPro _multimeterDisplayText;
         [SerializeField] private SelectorView _selectorView;
@@ -30,21 +30,20 @@ namespace MultimeterTest.MVC.Views
             {
                 _model.ChangeMode(MultimeterMode.Neutral);
             }
-            else if (selectorRotation >= 0 & selectorRotation < 90)
+            else switch (selectorRotation)
             {
-                _model.ChangeMode(MultimeterMode.DCVoltage);
-            }
-            else if (selectorRotation > 90 & selectorRotation <= 180)
-            {
-                _model.ChangeMode(MultimeterMode.ACVoltage);
-            }
-            else if (selectorRotation > 180 & selectorRotation <= 270)
-            {
-                _model.ChangeMode(MultimeterMode.Amperage);
-            }
-            else if (selectorRotation > 270 & selectorRotation < 360)
-            {
-                _model.ChangeMode(MultimeterMode.Resistance);
+                case < 90:
+                    _model.ChangeMode(MultimeterMode.DCVoltage);
+                    break;
+                case <= 180:
+                    _model.ChangeMode(MultimeterMode.ACVoltage);
+                    break;
+                case <= 270:
+                    _model.ChangeMode(MultimeterMode.Amperage);
+                    break;
+                case < 360:
+                    _model.ChangeMode(MultimeterMode.Resistance);
+                    break;
             }
         }
 

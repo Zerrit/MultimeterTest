@@ -6,10 +6,10 @@ namespace MultimeterTest.MVC
     public class MultimeterController
     {
         private readonly IMultimeterModel _model;
-        private readonly MultimeterView _multimeterView;
-        private readonly MultimeterUIView _multimeterUIView;
+        private readonly IMultimeterView _multimeterView;
+        private readonly IMultimeterUIView _multimeterUIView;
 
-        public MultimeterController(IMultimeterModel model, MultimeterView multimeterView, MultimeterUIView multimeterUIView)
+        public MultimeterController(IMultimeterModel model, IMultimeterView multimeterView, IMultimeterUIView multimeterUIView)
         {
             _model = model;
             _multimeterView = multimeterView;

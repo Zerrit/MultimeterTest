@@ -1,3 +1,5 @@
+using MultimeterTest.Tools;
+
 namespace MultimeterTest.MVC.Model
 {
     public interface IMultimeterModel
